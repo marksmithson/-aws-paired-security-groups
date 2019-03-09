@@ -39,8 +39,8 @@ resource "aws_security_group_rule" "logstash_5000" {
   to_port = 5000
   protocol = "tcp"
   security_group_id = "${aws_security_group.logstash.id}"
-  source_security_group_id = "${aws_security_group.application.id}"
-  description = "Access to 5000 from application"
+  cidr_blocks = ["10.0.1.0/24"]
+  description = "Access to 5000 from subnet"
 }
 
 resource "aws_security_group" "elasticsearch" {
