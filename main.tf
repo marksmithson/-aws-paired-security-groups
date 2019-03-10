@@ -33,16 +33,6 @@ resource "aws_security_group" "logstash" {
   vpc_id = "${aws_vpc.markers.id}"
 }
 
-resource "aws_security_group_rule" "logstash_5000" {
-  type = "ingress"
-  from_port = 500
-  to_port = 5000
-  protocol = "tcp"
-  security_group_id = "${aws_security_group.logstash.id}"
-  source_security_group_id = "${aws_security_group.application.id}"
-  description = "Access to 5000 from application"
-}
-
 resource "aws_security_group" "elasticsearch" {
   name = "Elasticsearch"
   description = "Security Group for the Elasticsearch Cluster"
